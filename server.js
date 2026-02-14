@@ -44,19 +44,14 @@ app.post("/stk-push", async (req, res) => {
         });
     }
 
-    // Convert to international format for Payhero API (remove +)
+    // Convert to Payhero expected format (07XXXXXXXX)
     let formattedPhone;
     if (phone.startsWith('+254')) {
-        formattedPhone = phone.replace(/\s/g, '').replace('+', '');
-        // Ensure it has the correct format
-        if (formattedPhone.startsWith('2547')) {
-            // Good format: 2547xxxxxxxx
-        } else if (formattedPhone.startsWith('25407')) {
-            // Convert 25407 to 2547
-            formattedPhone = formattedPhone.replace('25407', '2547');
-        }
+        formattedPhone = phone.replace(/\s/g, '').replace('+254', '0');
+    } else if (phone.startsWith('254')) {
+        formattedPhone = phone.replace('254', '0');
     } else {
-        formattedPhone = `254${phone.substring(1)}`;
+        formattedPhone = phone;
     }
     console.log("Formatted phone for Payhero:", formattedPhone);
 
