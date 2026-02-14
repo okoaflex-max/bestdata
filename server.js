@@ -22,6 +22,10 @@ const PAYHERO_CONFIG = {
 app.post("/stk-push", async (req, res) => {
     const { phone, amount } = req.body;
 
+    console.log("=== STK Push Request ===");
+    console.log("Raw phone:", phone);
+    console.log("Amount:", amount);
+
     // Validate input
     if (!phone || !amount) {
         return res.status(400).json({ 
@@ -33,6 +37,7 @@ app.post("/stk-push", async (req, res) => {
     // Validate phone number format (Kenyan) - Accept both 07XXXXXXXX and +254 7XXXXXXXX
     const phoneRegex = /^(\+254\s?)?07[0-9]{8}$/;
     if (!phoneRegex.test(phone)) {
+        console.log("Phone validation failed for:", phone);
         return res.status(400).json({ 
             success: false,
             message: "Invalid phone number format. Use format: 07XXXXXXXX or +254 7XXXXXXXX" 
@@ -41,6 +46,7 @@ app.post("/stk-push", async (req, res) => {
 
     // Convert to international format for Payhero API
     const formattedPhone = phone.startsWith('+254') ? phone.replace(/\s/g, '') : `+254${phone.substring(1)}`;
+    console.log("Formatted phone for Payhero:", formattedPhone);
 
     // Validate amount
     if (amount <= 0) {
@@ -51,6 +57,16 @@ app.post("/stk-push", async (req, res) => {
     }
 
     try {
+        console.log("Making Payhero API call...");
+        console.log("Channel ID:", PAYHERO_CONFIG.channel_id);
+        console.log("Request body:", {
+            amount: amount,
+            phone_number: formattedPhone,
+            channel_id: PAYHERO_CONFIG.channel_id,
+            external_reference: `DH${Date.now()}`,
+            provider: "m-pesa"
+        });
+
         const response = await axios.post(
             PAYHERO_CONFIG.baseURL,
             {
