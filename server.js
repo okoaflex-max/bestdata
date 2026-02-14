@@ -9,6 +9,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+app.use(express.static('public'));
 
 // Payhero API Configuration
 const PAYHERO_CONFIG = {
