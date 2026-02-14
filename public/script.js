@@ -299,7 +299,7 @@ function processPayment() {
 // Send STK Push to Payhero backend
 async function sendSTKPush() {
     try {
-        const response = await fetch('http://localhost:3000/stk-push', {
+        const response = await fetch('/stk-push', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
