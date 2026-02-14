@@ -34,18 +34,27 @@ app.post("/stk-push", async (req, res) => {
         });
     }
 
-    // Validate phone number format (Kenyan) - Accept both 07XXXXXXXX and +254 7XXXXXXXX
-    const phoneRegex = /^(\+254\s?)?07[0-9]{8}$/;
+    // Validate phone number format (Kenyan) - Accept multiple formats
+    const phoneRegex = /^(\+254\s?)?07[0-9]{8}$|^(\+254\s?)?7[0-9]{8}$/;
     if (!phoneRegex.test(phone)) {
         console.log("Phone validation failed for:", phone);
         return res.status(400).json({ 
             success: false,
-            message: "Invalid phone number format. Use format: 07XXXXXXXX or +254 7XXXXXXXX" 
+            message: "Invalid phone number format. Use format: 07XXXXXXXX, +254 7XXXXXXXX, or +254 07XXXXXXXX" 
         });
     }
 
     // Convert to international format for Payhero API
-    const formattedPhone = phone.startsWith('+254') ? phone.replace(/\s/g, '') : `+254${phone.substring(1)}`;
+    let formattedPhone;
+    if (phone.startsWith('+254')) {
+        formattedPhone = phone.replace(/\s/g, '');
+        // Ensure it has the leading 0 after +254
+        if (!formattedPhone.includes('+25407')) {
+            formattedPhone = formattedPhone.replace('+2547', '+25407');
+        }
+    } else {
+        formattedPhone = `+254${phone.substring(1)}`;
+    }
     console.log("Formatted phone for Payhero:", formattedPhone);
 
     // Validate amount
