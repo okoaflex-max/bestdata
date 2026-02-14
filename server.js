@@ -44,16 +44,19 @@ app.post("/stk-push", async (req, res) => {
         });
     }
 
-    // Convert to international format for Payhero API
+    // Convert to international format for Payhero API (remove +)
     let formattedPhone;
     if (phone.startsWith('+254')) {
-        formattedPhone = phone.replace(/\s/g, '');
-        // Ensure it has the leading 0 after +254
-        if (!formattedPhone.includes('+25407')) {
-            formattedPhone = formattedPhone.replace('+2547', '+25407');
+        formattedPhone = phone.replace(/\s/g, '').replace('+', '');
+        // Ensure it has the correct format
+        if (formattedPhone.startsWith('2547')) {
+            // Good format: 2547xxxxxxxx
+        } else if (formattedPhone.startsWith('25407')) {
+            // Convert 25407 to 2547
+            formattedPhone = formattedPhone.replace('25407', '2547');
         }
     } else {
-        formattedPhone = `+254${phone.substring(1)}`;
+        formattedPhone = `254${phone.substring(1)}`;
     }
     console.log("Formatted phone for Payhero:", formattedPhone);
 
@@ -71,7 +74,7 @@ app.post("/stk-push", async (req, res) => {
         console.log("Request body:", {
             amount: amount,
             phone_number: formattedPhone,
-            channel_id: PAYHERO_CONFIG.channel_id,
+            channel_id: parseInt(PAYHERO_CONFIG.channel_id),
             external_reference: `DH${Date.now()}`,
             provider: "m-pesa"
         });
@@ -81,7 +84,7 @@ app.post("/stk-push", async (req, res) => {
             {
                 amount: amount,
                 phone_number: formattedPhone,
-                channel_id: PAYHERO_CONFIG.channel_id,
+                channel_id: parseInt(PAYHERO_CONFIG.channel_id),
                 external_reference: `DH${Date.now()}`, // Dynamic order reference
                 provider: "m-pesa"
             },
