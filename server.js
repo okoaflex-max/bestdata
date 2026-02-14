@@ -30,13 +30,17 @@ app.post("/stk-push", async (req, res) => {
         });
     }
 
-    // Validate phone number format (Kenyan)
-    if (!/^07[0-9]{8}$/.test(phone)) {
+    // Validate phone number format (Kenyan) - Accept both 07XXXXXXXX and +254 7XXXXXXXX
+    const phoneRegex = /^(\+254\s?)?07[0-9]{8}$/;
+    if (!phoneRegex.test(phone)) {
         return res.status(400).json({ 
             success: false,
-            message: "Invalid phone number format. Use format: 07XXXXXXXX" 
+            message: "Invalid phone number format. Use format: 07XXXXXXXX or +254 7XXXXXXXX" 
         });
     }
+
+    // Convert to international format for Payhero API
+    const formattedPhone = phone.startsWith('+254') ? phone.replace(/\s/g, '') : `+254${phone.substring(1)}`;
 
     // Validate amount
     if (amount <= 0) {
@@ -51,7 +55,7 @@ app.post("/stk-push", async (req, res) => {
             PAYHERO_CONFIG.baseURL,
             {
                 amount: amount,
-                phone_number: phone,
+                phone_number: formattedPhone,
                 channel_id: PAYHERO_CONFIG.channel_id,
                 external_reference: `DH${Date.now()}`, // Dynamic order reference
                 provider: "m-pesa"
