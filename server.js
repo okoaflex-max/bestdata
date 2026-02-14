@@ -111,6 +111,11 @@ app.get("/health", (req, res) => {
     });
 });
 
+// Serve frontend at root
+app.get("/", (req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+
 // Order status endpoint (for checking payment status)
 app.get("/order-status/:reference", async (req, res) => {
     const { reference } = req.params;
@@ -141,12 +146,9 @@ app.use((err, req, res, next) => {
     });
 });
 
-// 404 handler
+// 404 handler - serve frontend for SPA routing
 app.use((req, res) => {
-    res.status(404).json({
-        success: false,
-        message: "Endpoint not found"
-    });
+    res.sendFile('index.html', { root: 'public' });
 });
 
 const PORT = process.env.PORT || 3000;
