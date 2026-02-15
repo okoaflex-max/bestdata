@@ -20,9 +20,12 @@ const PAYHERO_CONFIG = {
 
 // STK Push Endpoint
 app.post("/stk-push", async (req, res) => {
+    console.log("=== STK Push Request Received ===");
+    console.log("Request body:", req.body);
+    console.log("Request headers:", req.headers);
+    
     const { phone, amount } = req.body;
 
-    console.log("=== STK Push Request ===");
     console.log("Raw phone:", phone);
     console.log("Amount:", amount);
 
@@ -166,15 +169,21 @@ app.get("/order-status/:reference", async (req, res) => {
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-    console.error("Unhandled error:", err);
+    console.error("=== UNHANDLED ERROR ===");
+    console.error("Error:", err);
+    console.error("Stack:", err.stack);
     res.status(500).json({
         success: false,
-        message: "Internal server error"
+        message: "Internal server error",
+        error: err.message
     });
 });
 
 // 404 handler - serve frontend for SPA routing
 app.use((req, res) => {
+    console.log("=== 404 - Route not found ===");
+    console.log("Method:", req.method);
+    console.log("URL:", req.url);
     res.sendFile('index.html', { root: 'public' });
 });
 
