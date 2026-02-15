@@ -298,7 +298,13 @@ function processPayment() {
 
 // Send STK Push to Payhero backend
 async function sendSTKPush() {
+    console.log('=== sendSTKPush called ===');
+    console.log('orderData:', orderData);
+    console.log('safaricomNumber:', orderData.safaricomNumber);
+    console.log('plan.price:', orderData.plan.price);
+    
     try {
+        console.log('Making fetch request to /stk-push');
         const response = await fetch('/stk-push', {
             method: 'POST',
             headers: {
@@ -309,6 +315,9 @@ async function sendSTKPush() {
                 amount: orderData.plan.price
             })
         });
+        
+        console.log('Response received:', response);
+        console.log('Response status:', response.status);
         
         const result = await response.json();
         
