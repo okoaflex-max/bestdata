@@ -182,31 +182,7 @@
                         </div>
                     </div>
 
-                    <button class="proceed-btn" id="proceed-to-payment" onclick="
-    // Get user data
-    const airtelNumber = document.getElementById('airtel-number').value || document.getElementById('safaricom-number').value;
-    const safaricomNumber = document.getElementById('safaricom-number').value;
-    const selectedPlanElement = document.querySelector('.plan-card.selected');
-    const planName = selectedPlanElement ? selectedPlanElement.dataset.plan : 'No plan selected';
-    const planPrice = selectedPlanElement ? selectedPlanElement.dataset.price : '0';
-    
-    // Update confirmation page with user details
-    document.getElementById('summary-plan').textContent = planName + ' - Ksh ' + planPrice;
-    document.getElementById('summary-airtel').textContent = airtelNumber.substring(0, 4) + ' ' + airtelNumber.substring(4, 7) + ' ' + airtelNumber.substring(7);
-    document.getElementById('summary-safaricom').textContent = safaricomNumber.substring(0, 4) + ' ' + safaricomNumber.substring(4, 7) + ' ' + safaricomNumber.substring(7);
-    document.getElementById('summary-total').textContent = 'Ksh ' + planPrice;
-    
-    // Store data for payment
-    window.orderData = {
-        plan: {name: planName, price: parseInt(planPrice)},
-        airtelNumber: airtelNumber,
-        safaricomNumber: safaricomNumber
-    };
-    
-    // Switch to confirmation page
-    document.getElementById('numbers-section').classList.add('hidden');
-    document.getElementById('payment-section').classList.remove('hidden');
-">Proceed to Payment</button>
+                    <button class="proceed-btn" id="proceed-to-payment">Proceed to Payment</button>
                 </div>
             </section>
 

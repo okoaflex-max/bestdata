@@ -23,6 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePlanSelection();
     initializeFormValidation();
     initializePaymentFlow();
+    
+    // Add event listener for proceed button
+    const proceedBtn = document.getElementById('proceed-to-payment');
+    if (proceedBtn) {
+        proceedBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            proceedToPayment();
+        });
+    }
+    
     showSection('plans');
     
     // Fallback: Add event listener using event delegation - DISABLED
