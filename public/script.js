@@ -33,6 +33,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Add event listener for confirm payment button
+    const confirmBtn = document.getElementById('confirm-payment');
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            processPayment();
+        });
+    }
+    
     showSection('plans');
     
     // Fallback: Add event listener using event delegation - DISABLED

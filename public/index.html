@@ -222,65 +222,7 @@
                         </div>
                     </div>
 
-                    <button class="confirm-btn" id="confirm-payment" onclick="
-    // Get stored order data
-    const orderData = window.orderData;
-    
-    if (!orderData || !orderData.safaricomNumber || !orderData.plan) {
-        alert('Order data not found. Please go back and select a plan.');
-        return;
-    }
-    
-    // Show processing section
-    document.getElementById('payment-section').classList.add('hidden');
-    document.getElementById('processing-section').classList.remove('hidden');
-    
-    // Call Payhero API
-    const apiUrl = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3001/stk-push'
-        : 'https://your-app-name.onrender.com/stk-push';
-    
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            phone: orderData.safaricomNumber,
-            amount: orderData.plan.price
-        })
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log('Payhero response:', result);
-        if (result.success) {
-            // Simulate payment completion
-            setTimeout(() => {
-                document.getElementById('processing-section').classList.add('hidden');
-                document.getElementById('success-section').classList.remove('hidden');
-                
-                // Update success page
-                document.getElementById('transaction-id').textContent = 'DH' + Date.now().toString().slice(-8);
-                document.getElementById('success-plan').textContent = orderData.plan.name;
-                document.getElementById('success-plan-name').textContent = orderData.plan.name;
-                document.getElementById('success-airtel').textContent = orderData.airtelNumber.substring(0, 4) + ' ' + orderData.airtelNumber.substring(4, 7) + ' ' + orderData.airtelNumber.substring(7);
-                document.getElementById('success-amount').textContent = 'Ksh ' + orderData.plan.price;
-            }, 3000);
-        } else {
-            alert('Payment failed: ' + result.message);
-            // Go back to confirmation
-            document.getElementById('processing-section').classList.add('hidden');
-            document.getElementById('payment-section').classList.remove('hidden');
-        }
-    })
-    .catch(error => {
-        console.error('Payment error:', error);
-        alert('Payment error. Please try again.');
-        // Go back to confirmation
-        document.getElementById('processing-section').classList.add('hidden');
-        document.getElementById('payment-section').classList.remove('hidden');
-    });
-">Confirm & Pay</button>
+                    <button class="confirm-btn" id="confirm-payment">Confirm & Pay</button>
                 </div>
             </section>
 
