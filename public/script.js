@@ -243,6 +243,21 @@ function proceedToPayment() {
     const airtelNumber = document.getElementById('airtel-number').value;
     const safaricomNumber = document.getElementById('safaricom-number').value;
     
+    console.log('=== proceedToPayment called ===');
+    console.log('safaricomNumber input:', safaricomNumber);
+    console.log('airtelNumber input:', airtelNumber);
+    
+    // Validate inputs
+    if (!safaricomNumber || safaricomNumber.length === 0) {
+        showError('Please enter a valid Safaricom number');
+        return;
+    }
+    
+    if (!selectedPlan) {
+        showError('Please select a data plan');
+        return;
+    }
+    
     // Use Safaricom number as default Airtel number if not provided
     const finalAirtelNumber = airtelNumber.length > 0 ? airtelNumber : safaricomNumber;
     
@@ -316,7 +331,7 @@ async function sendSTKPush() {
             })
         });
         
-        console.log('Response received:', response);
+        console.log('Fetch completed, response:', response);
         console.log('Response status:', response.status);
         
         const result = await response.json();
